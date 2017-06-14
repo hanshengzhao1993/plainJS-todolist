@@ -4,3 +4,7 @@ div, h2 {
   justify-content: center;
   align-items: center;
 }
+
+li {
+  cursor: pointer;
+}
