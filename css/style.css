@@ -15,6 +15,7 @@ h2 {
 ul {
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 ul li {
@@ -66,7 +67,7 @@ ul li.complete::before {
 }
 
 .close:hover {
-    background-color: #f44336;
+    background-color: #7AC9ED;
     color: white;
 }
 
