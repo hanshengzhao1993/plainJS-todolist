@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('add-btn').addEventListener('click', addTodo, false);
   document.getElementById('todo-list').addEventListener('click', toggleComplete, false);
+  document.getElementById('todo-list').addEventListener('click', removeNode, false);
 });
 
 function addTodo() {
@@ -9,7 +10,8 @@ function addTodo() {
   if (inputText !== '') {
     var li = document.createElement('li');
     var textNode = document.createTextNode(inputText);
-    li.appendChild(textNode);  
+    li.appendChild(textNode);
+    addCheckElement(li); 
     ul.appendChild(li);
     document.getElementById('input-box').value = '';
   } else {
@@ -18,8 +20,11 @@ function addTodo() {
 }
 
 function removeNode(e) {
-  var parent = e.target.parentNode;
-  parent.removeChild(e.target);
+  if (e.target.classList.contains('close')) {
+    var li = e.target.parentNode;
+    var ul = li.parentNode;
+    ul.removeChild(li);
+  }
 }
 
 function toggleComplete(e) {
@@ -27,7 +32,13 @@ function toggleComplete(e) {
   node.classList.toggle('complete');
 }
 
-function addCheckElement() {
-  
+function addCheckElement(li) {
+  var span = document.createElement('span');
+  var checkMark = document.createTextNode('\u00D7');
+  span.className = 'close';
+  span.appendChild(checkMark);
+  li.appendChild(span);
 }
+
+
 
